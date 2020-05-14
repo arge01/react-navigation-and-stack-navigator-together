@@ -1,0 +1,17 @@
+{
+  "name": "corumKampanya",
+  "displayName": "corumKampanya",
+  "expo": {
+    "name": "corumKampanya",
+    "slug": "corumKampanya",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

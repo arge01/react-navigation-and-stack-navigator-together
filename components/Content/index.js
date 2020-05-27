@@ -4,10 +4,7 @@ import { Text, ImageBackground, StyleSheet, View, TouchableOpacity, Image } from
 export default class Content extends Component {
     render() {
         const background = require('../../assets/background.png');
-        return ( <
-            ImageBackground source = { background }
-            style = { styles.content } >
-            <
+        return ( <ImageBackground source = { background }style = { styles.content } ><
             View style = { styles.btnGroup } >
             <
             View style = {

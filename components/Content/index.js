@@ -4,55 +4,89 @@ import { Text, ImageBackground, StyleSheet, View, TouchableOpacity, Image } from
 export default class Content extends Component {
     render() {
         const background = require('../../assets/background.png');
-        return (
-            <ImageBackground source={background} style={styles.content}>
-                <View style={styles.btnGroup}>
-                    <View style={[styles.btnItem, styles.btnItemTop]}>
-                        <Image source={require('../../assets/fk.png')} style={styles.btnImgTop} />
-                        <View style={styles.btnView}>
-                            <Text style={styles.btnTextTop}>Firma </Text>
-                            <Text style={styles.btnTextTop}>Kayıt </Text>
-                        </View>
-                    </View>
-                    <View style={[styles.btnItem, styles.btnItemTop]}>
-                        <Image source={require('../../assets/e.png')} style={styles.btnImgTop} />
-                        <View style={styles.btnView}>
-                            <Text style={styles.btnTextTop}>Nöbetci </Text>
-                            <Text style={styles.btnTextTop}>Eczane </Text>
-                        </View>
-                    </View>
-                    <View style={[styles.btnItem, styles.btnItemTop]}>
-                        <Image source={require('../../assets/hv.png')} style={styles.btnImgTop} />
-                        <View style={styles.btnView}>
-                            <Text style={styles.btnTextTop}>Hava </Text>
-                            <Text style={styles.btnTextTop}>Durumu </Text>
-                        </View>
-                    </View>
-                </View>
-                <View style={styles.btnGroup}>
-                    <View style={[styles.btnItem, styles.btnItemBottom]}>
-                        <Image source={require('../../assets/is.png')} style={styles.btnImgBottom} />
-                        <View style={styles.btnView}>
-                            <Text style={styles.btnTextBottom}>İş </Text>
-                            <Text style={styles.btnTextBottom}>İlanları </Text>
-                        </View>
-                    </View>
-                    <View style={[styles.btnItem, styles.btnItemBottom]}>
-                        <Image source={require('../../assets/gz.png')} style={styles.btnImgBottom} />
-                        <View style={styles.btnView}>
-                            <Text style={styles.btnTextBottom}>Gazete </Text>
-                            <Text style={styles.btnTextBottom}>Oku </Text>
-                        </View>
-                    </View>
-                    <View style={[styles.btnItem, styles.btnItemBottom]}>
-                        <Image source={require('../../assets/fm.png')} style={styles.btnImgBottom} />
-                        <View style={styles.btnView}>
-                            <Text style={styles.btnTextBottom}> </Text>
-                            <Text style={styles.btnTextBottom}>Firmalar </Text>
-                        </View>
-                    </View>
-                </View>
-            </ImageBackground>
+        return ( <
+            ImageBackground source = { background }
+            style = { styles.content } >
+            <
+            View style = { styles.btnGroup } >
+            <
+            View style = {
+                [styles.btnItem, styles.btnItemTop] } >
+            <
+            Image source = { require('../../assets/fk.png') }
+            style = { styles.btnImgTop }
+            /> <
+            View style = { styles.btnView } >
+            <
+            Text style = { styles.btnTextTop } > Firma < /Text> <
+            Text style = { styles.btnTextTop } > Kayıt < /Text> <
+            /View> <
+            /View> <
+            View style = {
+                [styles.btnItem, styles.btnItemTop] } >
+            <
+            Image source = { require('../../assets/e.png') }
+            style = { styles.btnImgTop }
+            /> <
+            View style = { styles.btnView } >
+            <
+            Text style = { styles.btnTextTop } > Nöbetci < /Text> <
+            Text style = { styles.btnTextTop } > Eczane < /Text> <
+            /View> <
+            /View> <
+            View style = {
+                [styles.btnItem, styles.btnItemTop] } >
+            <
+            Image source = { require('../../assets/hv.png') }
+            style = { styles.btnImgTop }
+            /> <
+            View style = { styles.btnView } >
+            <
+            Text style = { styles.btnTextTop } > Hava < /Text> <
+            Text style = { styles.btnTextTop } > Durumu < /Text> <
+            /View> <
+            /View> <
+            /View> <
+            View style = { styles.btnGroup } >
+            <
+            View style = {
+                [styles.btnItem, styles.btnItemBottom] } >
+            <
+            Image source = { require('../../assets/is.png') }
+            style = { styles.btnImgBottom }
+            /> <
+            View style = { styles.btnView } >
+            <
+            Text style = { styles.btnTextBottom } > İş < /Text> <
+            Text style = { styles.btnTextBottom } > İlanları < /Text> <
+            /View> <
+            /View> <
+            View style = {
+                [styles.btnItem, styles.btnItemBottom] } >
+            <
+            Image source = { require('../../assets/gz.png') }
+            style = { styles.btnImgBottom }
+            /> <
+            View style = { styles.btnView } >
+            <
+            Text style = { styles.btnTextBottom } > Gazete < /Text> <
+            Text style = { styles.btnTextBottom } > Oku < /Text> <
+            /View> <
+            /View> <
+            View style = {
+                [styles.btnItem, styles.btnItemBottom] } >
+            <
+            Image source = { require('../../assets/fm.png') }
+            style = { styles.btnImgBottom }
+            /> <
+            View style = { styles.btnView } >
+            <
+            Text style = { styles.btnTextBottom } > < /Text> <
+            Text style = { styles.btnTextBottom } > Firmalar < /Text> <
+            /View> <
+            /View> <
+            /View> <
+            /ImageBackground>
         )
     }
 }
@@ -64,7 +98,7 @@ const styles = StyleSheet.create({
         resizeMode: 'cover',
         marginBottom: -1,
         position: 'relative',
-        zIndex: 100
+        zIndex: 1000
     },
     btnGroup: {
         flex: 1,

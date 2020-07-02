@@ -17,7 +17,7 @@ export default class Companies extends Component {
                     <Text style={styles.title}>İş Bankası Maximum Kampanyası...</Text>
                     <Text style={styles.cont}>125 TL ve Üzeri Yakıt Alışverişine MaxiPuan Hediye!</Text>
                     <View style={styles.buttonEl}>
-						<Button buttonStyle={styles.button} title="Detaylar.." onPress={() => console.log(/*this.props.nav.props.def.navigation*/)}/>
+						<Button buttonStyle={styles.button} title="Detaylar.." onPress={() => console.log(this.props.toggleModal())}/>
 						<View style={styles.iconType}>
 							<Text style={{fontSize: 12, padding: 10, color: '#484848', fontWeight: 'bold'}}>12 Gün 14 Saat Kaldı..</Text>
 						</View>

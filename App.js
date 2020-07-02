@@ -5,7 +5,6 @@ import { StyleSheet, SafeAreaView, Platform, View, Text, ActivityIndicator } fro
 import HomeScreen                                                            from './screens/HomeScreen';
 import Campany                                                               from './screens/PageScreen/Campany';
 import CustomDrawerContentComponent                                          from './components/Menu';
-import Detail                                                                from "./screens/PageScreen/Campany/detail";
 
 class Index extends Component {
     constructor(props) {
@@ -42,7 +41,7 @@ class Index extends Component {
     }
 };
 
-const AppDrawerNavigator = createStackNavigator({
+const AppDrawerNavigator = createDrawerNavigator({
     Home: {
         screen: HomeScreen,
         navigationOptions: {
@@ -71,7 +70,11 @@ const AppDrawerNavigator = createStackNavigator({
             drawerLabel: 'Etkinlik ve Duyurular'
         }
     }
-});
+},
+    {
+
+    }
+);
 
 
 const styles = StyleSheet.create({

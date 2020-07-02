@@ -2,23 +2,68 @@ import React, { Component } from 'react'
 import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native'
 
 export default class Header extends Component {
+    navigateTitle = () => {
+        let title = "";
+        switch(this.props.navigate.state.key) {
+            case "Home":
+                title = "Çorum Kampanya";
+                break;
+            case "Campany":
+                title = "Kampanyalar";
+                break;
+            case "Sweep":
+                title = "Çekiliş Delisi";
+                break;
+            case "Travel":
+                title = "Etkinlik ve Duyurular";
+                break;
+            default:
+                title = title
+        }
+        return <Text style={{color: '#fff'}}>{title}</Text>
+    }
     render() {
         const nav = require('../../assets/nav.png');
+        const back = require('../../assets/goBack.png');
         const natify = require('../../assets/natify.png');
-        return (
-            <View style={styles.header}>
-                <TouchableOpacity style={styles.items} activeOpacity={0.5}>
-                    <Image
-                     source={nav}
-                     style={styles.itemsImg}
-                    />
-                </TouchableOpacity>
+        let goBackTema = () => {
+            return (
                 <TouchableOpacity style={[styles.items, {justifyContent: 'flex-end'}]} activeOpacity={0.5}>
                     <Image
                      source={natify}
                      style={styles.itemsImg}
                     />
                 </TouchableOpacity>
+            )
+        };
+        if ( this.props.goBackButton ) {
+            goBackTema = () => {
+                return (
+                    <TouchableOpacity style={styles.items} activeOpacity={0.5}
+                        onPress={() => this.props.goBackButton()}
+                    >
+                        <Image
+                        source={back}
+                        style={styles.itemsImg}
+                        />
+                    </TouchableOpacity>
+                )
+            }
+        }
+        return (
+            <View style={styles.header}>
+                <TouchableOpacity
+                    style={styles.items}
+                    activeOpacity={0.5}
+                    onPress={() => this.props.navigate.openDrawer()}
+                    >
+                    <Image
+                     source={nav}
+                     style={styles.itemsImg}
+                    />
+                </TouchableOpacity>
+                { this.navigateTitle() }
+                { goBackTema() }
             </View>
         )
     }

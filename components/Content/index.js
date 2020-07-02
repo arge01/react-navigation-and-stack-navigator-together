@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Text, ImageBackground, StyleSheet, View, TouchableOpacity, Image } from 'react-native'
+import React, { Component } from 'react';
+import { Text, ImageBackground, StyleSheet, View, TouchableOpacity, Image, Button } from 'react-native'
 
 export default class Content extends Component {
     render() {
@@ -9,47 +9,47 @@ export default class Content extends Component {
                 <View style={styles.btnGroup}>
                     <View style={[styles.btnItem, styles.btnItemTop]}>
                         <Image source={require('../../assets/fk.png')} style={styles.btnImgTop} />
-                        <View style={styles.btnView}>
-                            <Text style={styles.btnTextTop}>Firma </Text>
-                            <Text style={styles.btnTextTop}>Kayıt </Text>
-                        </View>
+                        <TouchableOpacity style={styles.btnView}>
+                            <Text style={styles.btnTextTop}>Firma</Text>
+                            <Text style={styles.btnTextTop}>Kayıt</Text>
+                        </TouchableOpacity>
                     </View>
                     <View style={[styles.btnItem, styles.btnItemTop]}>
                         <Image source={require('../../assets/e.png')} style={styles.btnImgTop} />
-                        <View style={styles.btnView}>
+                        <TouchableOpacity style={styles.btnView}>
                             <Text style={styles.btnTextTop}>Nöbetci </Text>
                             <Text style={styles.btnTextTop}>Eczane </Text>
-                        </View>
+                        </TouchableOpacity>
                     </View>
                     <View style={[styles.btnItem, styles.btnItemTop]}>
                         <Image source={require('../../assets/hv.png')} style={styles.btnImgTop} />
-                        <View style={styles.btnView}>
+                        <TouchableOpacity style={styles.btnView}>
                             <Text style={styles.btnTextTop}>Hava </Text>
                             <Text style={styles.btnTextTop}>Durumu </Text>
-                        </View>
+                        </TouchableOpacity>
                     </View>
                 </View>
                 <View style={styles.btnGroup}>
                     <View style={[styles.btnItem, styles.btnItemBottom]}>
                         <Image source={require('../../assets/is.png')} style={styles.btnImgBottom} />
-                        <View style={styles.btnView}>
+                        <TouchableOpacity style={styles.btnView}>
                             <Text style={styles.btnTextBottom}>İş </Text>
                             <Text style={styles.btnTextBottom}>İlanları </Text>
-                        </View>
+                        </TouchableOpacity>
                     </View>
                     <View style={[styles.btnItem, styles.btnItemBottom]}>
                         <Image source={require('../../assets/gz.png')} style={styles.btnImgBottom} />
-                        <View style={styles.btnView}>
+                        <TouchableOpacity style={styles.btnView}>
                             <Text style={styles.btnTextBottom}>Gazete </Text>
                             <Text style={styles.btnTextBottom}>Oku </Text>
-                        </View>
+                        </TouchableOpacity>
                     </View>
                     <View style={[styles.btnItem, styles.btnItemBottom]}>
-                        <Image source={require('../../assets/fm.png')} style={styles.btnImgBottom} />
-                        <View style={styles.btnView}>
+                        <Image source={require('../../assets/firma.png')} style={styles.btnImgBottom} />
+                        <TouchableOpacity style={styles.btnView}>
                             <Text style={styles.btnTextBottom}> </Text>
                             <Text style={styles.btnTextBottom}>Firmalar </Text>
-                        </View>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </ImageBackground>
@@ -100,6 +100,7 @@ const styles = StyleSheet.create({
         transform: [{ skewX: '20deg' }]
     },
     btnTextTop: {
+        color: 'transparent',
         width: 100,
         paddingHorizontal: 20,
         textAlign: 'left',

@@ -8,19 +8,18 @@ export default class Slider extends Component {
         const travel = require('../../assets/travel.png');
         const campany = require('../../assets/campany.png');
         const sweep = require('../../assets/sweep.png');
+        const { navigate } = this.props;
         return (
             <View style={styles.slider}>
                 <ImageBackground style={styles.logo} source={logo}/>
                 <ImageBackground style={styles.sliderBack} source={background}/>
-                
-                
+
                 <View style={styles.slides}>
                     <Image style={styles.slideItem} source={require('../../assets/corumHD.jpg')}/>
                     <View style={{position: 'absolute', width: '100%', height: '100%'}}>
                         <View style={{position: 'relative', flex: 1, width: '100%', height: '100%'}}></View>
                     </View>
                 </View>
-                
                 
                 <TouchableOpacity style={[styles.btnItem, styles.travel]}activeOpacity={0.5}>
                     <Image
@@ -29,7 +28,7 @@ export default class Slider extends Component {
                     />
                 </TouchableOpacity>
                 
-                <TouchableOpacity style={[styles.btnItem, styles.campany]} activeOpacity={0.5}>
+                <TouchableOpacity onPress={() => navigate.navigate('Campany')} style={[styles.btnItem, styles.campany]} activeOpacity={0.5}>
                     <Image
                      source={campany}
                      style={styles.btnImg}
@@ -103,19 +102,21 @@ const styles = StyleSheet.create({
         resizeMode: 'cover'
     },
     travel: {
-        bottom: 60,
-        right: 15
+        width: 70,
+        height: 70,
+        bottom: 20,
+        left: 145
     },
     campany: {
-        width: 100,
-        height: 100,
-        top: '15%',
-        left: 2
+        width: 140,
+        height: 45,
+        left: 220,
+        bottom: 40
     },
     sweep: {
-        width: 80,
-        height: 80,
-        bottom: '5%',
-        left: 80
+        width: 70,
+        height: 70,
+        bottom: 20,
+        left: 70
     }
 });

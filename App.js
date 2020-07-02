@@ -72,7 +72,7 @@ const AppDrawerNavigator = createDrawerNavigator({
     }
 },
     {
-
+        contentComponent: CustomDrawerContentComponent
     }
 );
 

@@ -3,7 +3,6 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 
 class Detail extends Component {
     render() {
-        console.log(this.props)
         return (
             <>
                 <View>

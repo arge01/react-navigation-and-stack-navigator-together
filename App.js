@@ -72,6 +72,7 @@ const AppDrawerNavigator = createDrawerNavigator({
     }
 },
     {
+        initialRouteName: 'Home',
         contentComponent: CustomDrawerContentComponent
     }
 );

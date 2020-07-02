@@ -25,8 +25,8 @@ export default class Campany extends Component {
 		const background = require('../../../assets/background.png');
 		return (
 			<View style={{flex: 1, position: 'relative', width: '100%', height: '100%'}}>
-				<MyModal toggleModal={this.toggleModal} modal={this.state.modal}/>
 				<Header navigate={this.props.navigation} goBackButton={this.props.navigation.goBack} />
+				<MyModal toggleModal={this.toggleModal} modal={this.state.modal}/>
 				<ImageBackground
 					source={background}
 					resizeMode={"repeat"}

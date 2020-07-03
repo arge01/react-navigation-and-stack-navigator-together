@@ -2,10 +2,10 @@ import React, { Component }                                                     
 import { ImageBackground, Text, StyleSheet, View, ScrollView, Image, TouchableHighlight } from 'react-native';
 import Header                                                                             from '../../../components/Header';
 import { Button }                                                                         from 'react-native-elements';
-import Companies                                                                          from './campany';
-import MyModal                                                                            from './modal'
+import Sweeps                                                                          from './sweep';
+import MyModalSweep                                                                            from './modal'
 
-export default class Campany extends Component {
+export default class Sweep extends Component {
 	static navigationOptions = {
 		header: null
 	}
@@ -26,27 +26,14 @@ export default class Campany extends Component {
 		return (
 			<View style={{flex: 1, position: 'relative', width: '100%', height: '100%'}}>
 				<Header navigate={this.props.navigation} goBackButton={this.props.navigation.goBack} />
-				<MyModal toggleModal={this.toggleModal} modal={this.state.modal}/>
+				<MyModalSweep toggleModal={this.toggleModal} modal={this.state.modal}/>
 				<ImageBackground
 					source={background}
 					resizeMode={"repeat"}
 					style={styles.content}
 				>
 					<ScrollView style={styles.elem}>
-						<Companies toggleModal={this.toggleModal}/>
-						<Companies toggleModal={this.toggleModal}/>
-						<Companies toggleModal={this.toggleModal}/>
-						<Companies toggleModal={this.toggleModal}/>
-						<Companies toggleModal={this.toggleModal}/>
-						<Companies toggleModal={this.toggleModal}/>
-						<Companies toggleModal={this.toggleModal}/>
-						<Companies toggleModal={this.toggleModal}/>
-						<Companies toggleModal={this.toggleModal}/>
-						<Companies toggleModal={this.toggleModal}/>
-						<Companies toggleModal={this.toggleModal}/>
-						<Companies toggleModal={this.toggleModal}/>
-						<Companies toggleModal={this.toggleModal}/>
-						<Companies toggleModal={this.toggleModal}/>
+						<Sweeps toggleModal={this.toggleModal}/>
 					</ScrollView>
 				</ImageBackground>
 			</View>

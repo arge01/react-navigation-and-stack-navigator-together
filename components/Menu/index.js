@@ -4,6 +4,7 @@ import { DrawerItems } from "react-navigation";
 
 export default class CustomDrawerContentComponent extends Component {
     render() {
+        console.log(this.props)
         const logo = require('../../assets/logo.png');
         return (
             <View style={styles.content}>
@@ -11,7 +12,7 @@ export default class CustomDrawerContentComponent extends Component {
                     <ImageBackground style={styles.logo} source={logo}/>
                 </View>
                 <ScrollView>
-                    <DrawerItems {...this.props} />
+
                 </ScrollView>
             </View>
         )

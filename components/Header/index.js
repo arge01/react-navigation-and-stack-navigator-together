@@ -40,7 +40,7 @@ export default class Header extends Component {
             goBackTema = () => {
                 return (
                     <TouchableOpacity style={styles.items} activeOpacity={0.5}
-                        onPress={() => this.props.goBackButton()}
+                           onPress={ () => this.props.navigate.navigate('Home') }
                     >
                         <Image
                         source={back}

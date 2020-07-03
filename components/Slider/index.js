@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component }                                                 from 'react'
 import { Text, View, StyleSheet, ImageBackground, Image, TouchableOpacity } from 'react-native'
+import { AppStackNavigator }                                                from "../../App";
 
 export default class Slider extends Component {
     render() {
@@ -20,22 +21,22 @@ export default class Slider extends Component {
                         <View style={{position: 'relative', flex: 1, width: '100%', height: '100%'}}></View>
                     </View>
                 </View>
-                
-                <TouchableOpacity style={[styles.btnItem, styles.travel]}activeOpacity={0.5}>
+
+                <TouchableOpacity onPress={ () => navigate.navigate('Travel') } style={[styles.btnItem, styles.travel]}activeOpacity={0.5}>
                     <Image
                      source={travel}
                      style={styles.btnImg}
                     />
                 </TouchableOpacity>
-                
-                <TouchableOpacity onPress={() => navigate.navigate('Campany')} style={[styles.btnItem, styles.campany]} activeOpacity={0.5}>
+
+                <TouchableOpacity onPress={ () => navigate.navigate('Campany') } style={[styles.btnItem, styles.campany]} activeOpacity={0.5}>
                     <Image
                      source={campany}
                      style={styles.btnImg}
                     />
                 </TouchableOpacity>
-                
-                <TouchableOpacity style={[styles.btnItem, styles.sweep]} activeOpacity={0.5}>
+
+                <TouchableOpacity onPress={ () => navigate.navigate('Sweep') } style={[styles.btnItem, styles.sweep]} activeOpacity={0.5}>
                     <Image
                      source={sweep}
                      style={styles.btnImg}

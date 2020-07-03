@@ -1,10 +1,15 @@
 import React, { Component }                                                  from 'react';
 import Footer                                                                from './components/Footer';
-import { createDrawerNavigator , createStackNavigator, createAppContainer }  from 'react-navigation';
+import { createDrawerNavigator, createStackNavigator }                       from 'react-navigation';
 import { StyleSheet, SafeAreaView, Platform, View, Text, ActivityIndicator } from 'react-native';
 import HomeScreen                                                            from './screens/HomeScreen';
 import Campany                                                               from './screens/PageScreen/Campany';
 import CustomDrawerContentComponent                                          from './components/Menu';
+import Sweep                                                                 from "./screens/PageScreen/Sweep";
+import Travel                                                                from "./screens/PageScreen/Travel";
+import Companies
+                                                                             from "./screens/PageScreen/Campany/campany";
+import CompaniesCategory                                                     from "./screens/PageScreen/Companies";
 
 class Index extends Component {
     constructor(props) {
@@ -25,7 +30,7 @@ class Index extends Component {
             return (
                 <>
                     <SafeAreaView style={[styles.page, styles.droidSafeArea]}>
-                        <AppDrawerNavigator/>
+                        <AppDrawerNavigator />
                         <Footer/>
                     </SafeAreaView>
                 </>
@@ -39,44 +44,55 @@ class Index extends Component {
             );
         }
     }
-};
+}
 
-const AppDrawerNavigator = createDrawerNavigator({
+export const NavigateDraw = {
     Home: {
         screen: HomeScreen,
         navigationOptions: {
             title: 'Anasayfa',
-            drawerLabel: 'Anasayfa'
+                drawerLabel: 'Anasayfa'
         }
     },
     Campany: {
         screen: Campany,
         navigationOptions: {
             title: 'Kampanyalar',
-            drawerLabel: 'Kampanyalar'
+                drawerLabel: 'Kampanyalar'
         }
     },
     Sweep: {
-        screen: Campany,
+        screen: Sweep,
         navigationOptions: {
             title: 'Çekiliş Delisi',
-            drawerLabel: 'Çekiliş Delisi'
+                drawerLabel: 'Çekiliş Delisi'
         }
     },
     Travel: {
-        screen: Campany,
+        screen: Travel,
         navigationOptions: {
             title: 'Etkinlik ve Duyurular',
-            drawerLabel: 'Etkinlik ve Duyurular'
+                drawerLabel: 'Etkinlik ve Duyurular'
+        }
+    },
+    Companies: {
+        screen: CompaniesCategory,
+        navigationOptions: {
+            title: 'Firmalar',
+            drawerLabel: 'Firmalar'
         }
     }
-},
-    {
-        initialRouteName: 'Home',
-        contentComponent: CustomDrawerContentComponent
-    }
-);
+}
 
+export const SettingNavigator = {
+    contentComponent: CustomDrawerContentComponent
+}
+
+export const AppStackNavigator = createStackNavigator(NavigateDraw);
+
+export const AppDrawerNavigator = createDrawerNavigator({
+    AppStackNavigator
+}, SettingNavigator);
 
 const styles = StyleSheet.create({
     content: {

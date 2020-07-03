@@ -4,6 +4,7 @@ import { Text, ImageBackground, StyleSheet, View, TouchableOpacity, Image, Butto
 export default class Content extends Component {
     render() {
         const background = require('../../assets/background.png');
+        const { navigate } = this.props;
         return (
             <ImageBackground source={background} style={styles.content}>
                 <View style={styles.btnGroup}>
@@ -46,7 +47,7 @@ export default class Content extends Component {
                     </View>
                     <View style={[styles.btnItem, styles.btnItemBottom]}>
                         <Image source={require('../../assets/firma.png')} style={styles.btnImgBottom} />
-                        <TouchableOpacity style={styles.btnView}>
+                        <TouchableOpacity onPress={ () => navigate.navigate('Companies') } style={styles.btnView}>
                             <Text style={styles.btnTextBottom}> </Text>
                             <Text style={styles.btnTextBottom}>Firmalar </Text>
                         </TouchableOpacity>
@@ -100,7 +101,6 @@ const styles = StyleSheet.create({
         transform: [{ skewX: '20deg' }]
     },
     btnTextTop: {
-        color: 'transparent',
         width: 100,
         paddingHorizontal: 20,
         textAlign: 'left',

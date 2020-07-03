@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import Slider from '../../components/Slider';
-import Content from '../../components/Content';
-import Header from '../../components/Header';
-import { ImageBackground, StyleSheet } from 'react-native'
+import React, { Component }            from 'react';
+import Slider                          from '../../components/Slider';
+import Content                         from '../../components/Content';
+import Header                          from '../../components/Header';
+import { ImageBackground, StyleSheet } from 'react-native';
 
 class HomeScreen extends Component {
 	static navigationOptions = {
@@ -15,7 +15,7 @@ class HomeScreen extends Component {
 				<Header navigate={this.props.navigation} goBackButton={false} />
 				<ImageBackground source={background} resizeMode={"repeat"} style={styles.content}>
 					<Slider navigate={this.props.navigation} />
-					<Content />
+					<Content navigate={this.props.navigation} />
 				</ImageBackground>
 			</>
 		);

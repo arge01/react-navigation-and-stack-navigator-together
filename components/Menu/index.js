@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, View, ImageBackground, Text } from 'react-native';
+import { StyleSheet, ScrollView, View, ImageBackground, Text, TouchableOpacity } from 'react-native';
 import { DrawerItems } from "react-navigation";
 
 export default class CustomDrawerContentComponent extends Component {
     render() {
-        console.log(this.props)
         const logo = require('../../assets/logo.png');
         return (
             <View style={styles.content}>
@@ -12,7 +11,40 @@ export default class CustomDrawerContentComponent extends Component {
                     <ImageBackground style={styles.logo} source={logo}/>
                 </View>
                 <ScrollView>
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={() => this.props.navigation.navigate('Home')}
+                    >
+                        <Text style={{fontSize: 15, fontWeight: 'bold'}}>Anasayfa</Text>
+                    </TouchableOpacity>
 
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={() => this.props.navigation.navigate('Campany')}
+                    >
+                        <Text style={{fontSize: 15, fontWeight: 'bold'}}>Kampanyalar</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={() => this.props.navigation.navigate('Sweep')}
+                    >
+                        <Text style={{fontSize: 15, fontWeight: 'bold'}}>Çekiliş Delisi</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={() => this.props.navigation.navigate('Travel')}
+                    >
+                        <Text style={{fontSize: 15, fontWeight: 'bold'}}>Etkinlik ve Duyurular</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={() => this.props.navigation.navigate('Companies')}
+                    >
+                        <Text style={{fontSize: 15, fontWeight: 'bold'}}>Firmalar</Text>
+                    </TouchableOpacity>
                 </ScrollView>
             </View>
         )
@@ -44,5 +76,13 @@ const styles = StyleSheet.create({
         paddingBottom: 10,
         borderBottomColor: '#000',
         borderBottomWidth: 2,
+    },
+    button: {
+        width: '100%',
+        height: 50,
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        borderBottomWidth: 2,
+        borderBottomColor: '#000'
     }
 });

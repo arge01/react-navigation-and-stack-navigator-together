@@ -7,9 +7,14 @@ import { ImageBackground, StyleSheet } from 'react-native';
 class HomeScreen extends Component {
 	static navigationOptions = {
         header: null
-    }
+	}
+
+	constructor(props) {
+		super(props);
+	}
+
 	render() {
-		const background = require('../../assets/background.png')
+		const background = require('../../assets/background.png');
 		return (
 			<>
 				<Header navigate={this.props.navigation} goBackButton={false} />

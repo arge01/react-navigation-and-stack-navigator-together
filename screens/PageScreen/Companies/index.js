@@ -3,13 +3,14 @@ import Header                              from "../../../components/Header";
 import { createStackNavigator, TabRouter } from "react-navigation";
 import Category                            from "./category";
 import NextCompanies                       from "./nextcompanies";
-import HomeScreen                          from "../../HomeScreen";
 import CompanyDetail                       from "./companydetail";
 
 class CompaniesCategory extends Component {
-    static navigationOptions = {
-        header: null
-    }
+    componentDidMount() {
+		setTimeout(() => {
+			this.props.navigation.closeDrawer()
+		}, 95)
+	}
     render() {
         return (
             <>
@@ -22,13 +23,22 @@ class CompaniesCategory extends Component {
 
 const Navs = {
     Category: {
-        screen: Category
+        screen: Category,
+        navigationOptions: {
+            header: null
+        },
     },
     NextCompanies: {
-        screen: NextCompanies
+        screen: NextCompanies,
+        navigationOptions: {
+            header: null
+        },
     },
     CompanyDetail: {
-        screen: CompanyDetail
+        screen: CompanyDetail,
+        navigationOptions: {
+            header: null
+        },
     }
 }
 

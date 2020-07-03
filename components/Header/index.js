@@ -4,7 +4,7 @@ import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native'
 export default class Header extends Component {
     navigateTitle = () => {
         let title = "";
-        switch(this.props.navigate.state.key) {
+        switch(this.props.navigate.state.routeName) {
             case "Home":
                 title = "Çorum Kampanya";
                 break;
@@ -16,6 +16,9 @@ export default class Header extends Component {
                 break;
             case "Travel":
                 title = "Etkinlik ve Duyurular";
+                break;
+            case "Companies":
+                title = "Firmalar";
                 break;
             default:
                 title = title
@@ -40,7 +43,7 @@ export default class Header extends Component {
             goBackTema = () => {
                 return (
                     <TouchableOpacity style={styles.items} activeOpacity={0.5}
-                           onPress={ () => this.props.navigate.navigate('Home') }
+                           onPress={ () => this.props.navigate.goBack() }
                     >
                         <Image
                         source={back}

@@ -7,11 +7,13 @@ import Campany                                                               fro
 import CustomDrawerContentComponent                                          from './components/Menu';
 import Sweep                                                                 from "./screens/PageScreen/Sweep";
 import Travel                                                                from "./screens/PageScreen/Travel";
-import Companies
-                                                                             from "./screens/PageScreen/Campany/campany";
+import Companies                                                             from "./screens/PageScreen/Campany/campany";
 import CompaniesCategory                                                     from "./screens/PageScreen/Companies";
 
 class Index extends Component {
+    static navigationOptions = {
+        header: null
+    }
     constructor(props) {
         super(props);
         this.state = {
@@ -51,41 +53,46 @@ export const NavigateDraw = {
         screen: HomeScreen,
         navigationOptions: {
             title: 'Anasayfa',
-                drawerLabel: 'Anasayfa'
+            drawerLabel: 'Anasayfa',
+            header: null
         }
     },
     Campany: {
         screen: Campany,
         navigationOptions: {
             title: 'Kampanyalar',
-                drawerLabel: 'Kampanyalar'
+            drawerLabel: 'Kampanyalar',
+            header: null
         }
     },
     Sweep: {
         screen: Sweep,
         navigationOptions: {
             title: 'Çekiliş Delisi',
-                drawerLabel: 'Çekiliş Delisi'
+            drawerLabel: 'Çekiliş Delisi',
+            header: null
         }
     },
     Travel: {
         screen: Travel,
         navigationOptions: {
             title: 'Etkinlik ve Duyurular',
-                drawerLabel: 'Etkinlik ve Duyurular'
+            drawerLabel: 'Etkinlik ve Duyurular',
+            header: null
         }
     },
     Companies: {
         screen: CompaniesCategory,
         navigationOptions: {
             title: 'Firmalar',
-            drawerLabel: 'Firmalar'
+            drawerLabel: 'Firmalar',
+            header: null
         }
     }
 }
 
 export const SettingNavigator = {
-    contentComponent: CustomDrawerContentComponent
+    contentComponent: CustomDrawerContentComponent,
 }
 
 export const AppStackNavigator = createStackNavigator(NavigateDraw);

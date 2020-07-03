@@ -17,6 +17,12 @@ export default class Sweep extends Component {
 		};
 	}
 
+	componentDidMount() {
+		setTimeout(() => {
+			this.props.navigation.closeDrawer()
+		}, 95)
+	}
+
 	toggleModal = () => {
 		return this.setState({modal: !this.state.modal})
 	}

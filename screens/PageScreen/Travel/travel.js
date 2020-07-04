@@ -18,9 +18,6 @@ export default class Travels extends Component {
                     <Text style={styles.cont}>125 TL ve Üzeri Yakıt Alışverişine MaxiPuan Hediye!</Text>
                     <View style={styles.buttonEl}>
 						<Button buttonStyle={styles.button} title="Detaylar.." onPress={() => this.props.toggleModal()}/>
-						<View style={styles.iconType}>
-							<Text style={{fontSize: 12, padding: 10, color: '#484848', fontWeight: 'bold'}}>12 Gün 14 Saat Kaldı..</Text>
-						</View>
 					</View>
                 </View>
             </View>
@@ -70,11 +67,6 @@ const styles = StyleSheet.create({
         color: '#464646'
 	},
 	buttonEl: {
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'space-between',
-		borderBottomWidth: 2,
-		borderBottomColor: '#ddd'
 	},
 	iconType: {
 		flex: 1,
@@ -82,7 +74,8 @@ const styles = StyleSheet.create({
 		alignItems: 'flex-end'
 	},
 	button: {
-		backgroundColor: '#43ae55',
+		width: '100%',
+		backgroundColor: '#304e86',
 		color: 'white',
 		fontSize: 12,
 		borderRadius: 35

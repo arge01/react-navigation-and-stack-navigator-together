@@ -31,7 +31,7 @@ export default class Header extends Component {
         const natify = require('../../assets/natify.png');
         let goBackTema = () => {
             return (
-                <TouchableOpacity style={[styles.items, {justifyContent: 'flex-end'}]} activeOpacity={0.5}>
+                <TouchableOpacity style={[styles.items, {justifyContent: 'flex-start'}]} activeOpacity={0.5}>
                     <Image
                      source={natify}
                      style={styles.itemsImg}
@@ -55,6 +55,8 @@ export default class Header extends Component {
         }
         return (
             <View style={styles.header}>
+                { goBackTema() }
+                { this.navigateTitle() }
                 <TouchableOpacity
                     style={styles.items}
                     activeOpacity={0.5}
@@ -65,8 +67,6 @@ export default class Header extends Component {
                      style={styles.itemsImg}
                     />
                 </TouchableOpacity>
-                { this.navigateTitle() }
-                { goBackTema() }
             </View>
         )
     }

@@ -93,6 +93,7 @@ export const NavigateDraw = {
 
 export const SettingNavigator = {
     contentComponent: CustomDrawerContentComponent,
+    drawerPosition: "right"
 }
 
 export const AppStackNavigator = createStackNavigator(NavigateDraw);

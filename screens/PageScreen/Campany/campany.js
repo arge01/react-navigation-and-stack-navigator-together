@@ -72,9 +72,7 @@ const styles = StyleSheet.create({
 	buttonEl: {
 		flexDirection: 'row',
 		alignItems: 'center',
-		justifyContent: 'space-between',
-		borderBottomWidth: 2,
-		borderBottomColor: '#ddd'
+		justifyContent: 'space-between'
 	},
 	iconType: {
 		flex: 1,

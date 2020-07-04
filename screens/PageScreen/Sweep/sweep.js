@@ -19,7 +19,7 @@ export default class Sweeps extends Component {
                     <View style={styles.buttonEl}>
 						<Button buttonStyle={styles.button} title="Detaylar.." onPress={() => this.props.toggleModal()}/>
 						<View style={styles.iconType}>
-							<Text style={{fontSize: 12, padding: 10, color: '#484848', fontWeight: 'bold'}}>12 Gün 14 Saat Kaldı..</Text>
+							<Text style={{fontSize: 12, padding: 10, color: '#fe5656', fontWeight: 'bold'}}>12 Gün 14 Saat Kaldı..</Text>
 						</View>
 					</View>
                 </View>
@@ -72,9 +72,7 @@ const styles = StyleSheet.create({
 	buttonEl: {
 		flexDirection: 'row',
 		alignItems: 'center',
-		justifyContent: 'space-between',
-		borderBottomWidth: 2,
-		borderBottomColor: '#ddd'
+		justifyContent: 'space-between'
 	},
 	iconType: {
 		flex: 1,
@@ -82,7 +80,7 @@ const styles = StyleSheet.create({
 		alignItems: 'flex-end'
 	},
 	button: {
-		backgroundColor: '#43ae55',
+		backgroundColor: '#fe5656',
 		color: 'white',
 		fontSize: 12,
 		borderRadius: 35

@@ -6,7 +6,7 @@ export default class Content extends Component {
         const background = require('../../assets/background.png');
         const { navigate } = this.props;
         return (
-            <ImageBackground source={background} style={styles.content}>
+            <ImageBackground source={background} resizeMode={'repeat'} style={styles.content}>
                 <View style={styles.btnGroup}>
                     <View style={[styles.btnItem, styles.btnItemTop]}>
                         <Image source={require('../../assets/fk.png')} style={styles.btnImgTop} />

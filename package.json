@@ -8,6 +8,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^5.13.1",
+    "@fortawesome/free-solid-svg-icons": "^5.13.1",
+    "@fortawesome/react-fontawesome": "^0.1.11",
+    "@mdi/font": "^5.3.45",
     "bootstrap": "^4.5.0",
     "expo": "~37.0.3",
     "expo-splash-screen": "^0.2.3",

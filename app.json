@@ -5,6 +5,14 @@
     "name": "corumKampanya",
     "slug": "corumKampanya",
     "version": "1.0.0",
+    "ios": {
+      "bundleIdentifier": "corum.kampanya.version1",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "corum.kampanya.version1",
+      "versionCode": 0
+    },
     "platforms": [
       "ios",
       "android",
@@ -12,6 +20,8 @@
     ],
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "description": "Çorum Kampanya",
+    "githubUrl": "https://github.com/arge01/corumKampanyaV1"
   }
 }

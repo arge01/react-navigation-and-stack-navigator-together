@@ -4,7 +4,9 @@ const settings = {
     defaultUri: {
         settings: "settings",
         home: "index.html",
-        campany: "kampanyalar.html"
+        campany: "kampanyalar.html",
+        sweep: "cekilis-delisi.html",
+        travel: "etkinlikler.html"
     }
 }
 export default settings;

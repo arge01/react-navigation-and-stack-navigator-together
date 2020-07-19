@@ -1,28 +1,60 @@
 import React, { Component }              from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { Button, Icon }                  from 'react-native-elements';
+import settings from '../../../services/settings';
 
 export default class Travels extends Component {
     constructor(props) {
         super(props);
         this.state = {
+			loading: false,
+			campany: {},
+			gallery: [],
+			label: "",
+			content: "",
+			date: "",
+			img: ""
         };
-    }
+	}
+	
+	componentDidMount() {
+		fetch(`${settings.uri}/${this.props.val.slug}.html`)
+			.then((res) => res.json())
+			.then((res) => this.setState({
+				campany: res, 
+				gallery: res.content.galerisi,
+				img: res.content.galerisi[0].img,
+				date: res.date, 
+				content: res.content.icerigi.icerik, 
+				label: res.content.icerigi.label, 
+				loading: true}))
+	}
 
-    render() {
-        return (
-            <View style={styles.el}>
-                <Image source={{ uri: 'https://www.opet.com.tr/Files/Images/Campaign/637008747137704850_OPET_ISBANKASI_MAXIMUMKAMPANYA_thumb.png' }} style={styles.img} />
-                <View style={styles.text}>
-                    <Text style={styles.title}>İş Bankası Maximum Kampanyası...</Text>
-                    <Text style={styles.cont}>125 TL ve Üzeri Yakıt Alışverişine MaxiPuan Hediye!</Text>
-                    <View style={styles.buttonEl}>
-						<Button buttonStyle={styles.button} title="Detaylar.." onPress={() => this.props.toggleModal()}/>
+	render() {
+		const {val, key} = this.props;
+        if ( this.state.loading ) {
+			return (
+				<View style={styles.el}>
+					<Image source={{ uri: `${settings.imgUri}/${this.state.img}` }} style={styles.img} />
+					<View style={styles.text}>
+						<Text style={styles.title}>{this.state.campany.title}</Text>
+						<Text style={styles.cont}>{this.state.label}</Text>
+						<View style={styles.buttonEl}>
+							<Button buttonStyle={styles.button} title="Detaylar.." onPress={() => this.props.toggleModal(this.state.campany)}/>
+						</View>
 					</View>
-                </View>
-            </View>
-        );
+				</View>
+			);
+		} else {
+			return (
+				<View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+					<Text>Ayrıntılar Yükleniyor!</Text>
+					<Text>Lütfen Bekleyiniz...</Text>
+				</View>
+			)
+		}
     }
+	
 }
 
 const styles = StyleSheet.create({

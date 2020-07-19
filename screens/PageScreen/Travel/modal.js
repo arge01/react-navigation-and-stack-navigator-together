@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { View, Text, Modal, TouchableHighlight, StyleSheet, ScrollView, Image } from 'react-native';
 import { Icon, Button } from 'react-native-elements';
+import settings from '../../../services/settings';
+import HTML from 'react-native-render-html';
 
 export default class MyModalTravel extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        };
-    }
-
     render() {
+        const {...val} = this.props.val;
         return (
             <Modal
                 animationType="slide"
@@ -19,9 +16,9 @@ export default class MyModalTravel extends Component {
                 <View style={styles.modalView}>
                     <View style={styles.modalContent}>
                         <View style={styles.modalHeader}>
-                            <Text style={[styles.headerItem, styles.headerText]}>Bitiş Tarihi: 27.10.2020</Text>
+                            <Text style={[styles.headerItem, styles.headerText]}>{val.date}</Text>
                             <TouchableHighlight
-                                onPress={() => this.props.toggleModal()}
+                                onPress={() => this.props.toggleModal(val)}
                             >
                                 <Icon
                                     name='close'
@@ -31,20 +28,32 @@ export default class MyModalTravel extends Component {
                         </View>
                         <View style={styles.modalContainer}>
                             <View style={styles.imgBack}>
-                                <Image source={{ uri: 'https://www.opet.com.tr/Files/Images/Campaign/637293886292328425_yakit_puan_header.png' }} style={styles.img} />
+                                <ScrollView style={{height: 200, width: '100%'}} vertical={true}>
+                                    {
+                                        val.content.galerisi.map((val, key) => {
+                                            return (
+                                                console.log(val),
+                                                <Image
+                                                    key={key}
+                                                    source={{ 
+                                                    uri: `${settings.imgUri}/thump-${val.img}` }} 
+                                                    resizeMode='cover'
+                                                    style={styles.img} />
+                                            )
+                                        })
+                                    }
+                                </ScrollView>
                             </View>
                             <View style={{ justifyContent: 'center', width: '100%', backgroundColor: '#fff', minHeight: 95, alignItems: 'center', padding: 15, marginVertical: 10 }}>
-                                <Text style={styles.title}>İş Bankası Maximum Kampanyası...</Text>
+                            <Text style={styles.title}> {val.content.icerigi.name} </Text>
                             </View>
                             <ScrollView style={{flex: 1}}>
-                                <View style={{ justifyContent: 'flex-start', width: '100%', backgroundColor: '#fff', minHeight: 95, alignItems: 'flex-start', padding: 30, borderBottomColor: '#9a9a9a', borderBottomWidth: 2 }}>
-                                    <Text style={styles.titleText}>125 TL ve Üzeri Yakıt Alışverişine MaxiPuan Hediye!</Text>
-                                    <Text style={styles.titleContentText}>
-                                        Lorem ipsum dolor sit amet,
-                                    </Text>
+                            <View style={{ justifyContent: 'flex-start', width: '100%', backgroundColor: '#fff', minHeight: 95, alignItems: 'flex-start', padding: 30, borderBottomColor: '#9a9a9a', borderBottomWidth: 2 }}>
+                                    <Text style={styles.titleText}>{val.content.icerigi.label}</Text>
+                                    <HTML style={styles.titleContentText} html={val.content.icerigi.icerik} />
                                 </View>
                             </ScrollView>
-                            <Button buttonStyle={styles.button} title="Etkinliğe Katıl.." onPress={() => this.props.toggleModal()}/>
+                            <Button buttonStyle={styles.button} title="Adrese Git.." onPress={() => Linking.openURL(`${val.map}`)}/>
                         </View>
                     </View>
                 </View>

@@ -4,6 +4,7 @@ import Header                                                                   
 import { Button }                                                                         from 'react-native-elements';
 import Sweeps                                                                          from './sweep';
 import MyModalSweep                                                                            from './modal'
+import settings from '../../../services/settings';
 
 export default class Sweep extends Component {
 	static navigationOptions = {
@@ -13,37 +14,67 @@ export default class Sweep extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			modal: false
+			modal: false,
+			modalVal: {
+				title: "",
+				content: {
+					icerigi: {},
+					tablari: [],
+					galerisi: []
+				}
+			},
+			loading: false,
+			campanys: {},
+			tabs: []
 		};
 	}
 
 	componentDidMount() {
 		setTimeout(() => {
 			this.props.navigation.closeDrawer()
-		}, 95)
+		}, 95);
+
+		fetch(`${settings.uri}/${settings.defaultUri.sweep}`)
+			.then((res) => res.json())
+			.then((res) => this.setState({campanys: res, tabs: res.tabs, loading: true}) )
 	}
 
-	toggleModal = () => {
-		return this.setState({modal: !this.state.modal})
+	toggleModal = (val) => {
+		return this.setState({modal: !this.state.modal, modalVal: val});
 	}
 
 	render() {
 		const background = require('../../../assets/background.png');
-		return (
-			<View style={{flex: 1, position: 'relative', width: '100%', height: '100%'}}>
-				<Header navigate={this.props.navigation} goBackButton={this.props.navigation.goBack} />
-				<MyModalSweep toggleModal={this.toggleModal} modal={this.state.modal}/>
-				<ImageBackground
-					source={background}
-					resizeMode={"repeat"}
-					style={styles.content}
-				>
-					<ScrollView style={styles.elem}>
-						<Sweeps toggleModal={this.toggleModal}/>
-					</ScrollView>
-				</ImageBackground>
-			</View>
-		);
+		if ( this.state.loading ) {
+			return (
+				<View style={{flex: 1, position: 'relative', width: '100%', height: '100%'}}>
+					<Header navigate={this.props.navigation} goBackButton={this.props.navigation.goBack} />
+					<MyModalSweep toggleModal={this.toggleModal} modal={this.state.modal} val={this.state.modalVal}/>
+					<ImageBackground
+						source={background}
+						resizeMode={"repeat"}
+						style={styles.content}
+					>
+						<ScrollView style={styles.elem}>
+							{
+								this.state.tabs.map((val, key) => {
+									return (
+										<Sweeps key={key} val={val} toggleModal={this.toggleModal}/>
+									)
+								})
+							}
+						</ScrollView>
+					</ImageBackground>
+				</View>
+			);
+		} else {
+			return (
+				<View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+					<Text>Çekilişler Yükleniyor!</Text>
+					<Text>Lütfen Bekleyiniz...</Text>
+				</View>
+			)
+		}
 	}
 }
 

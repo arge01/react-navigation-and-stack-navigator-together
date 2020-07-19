@@ -38,7 +38,6 @@ export default class MyModalSweep extends Component {
                                     {
                                         val.content.galerisi.map((val, key) => {
                                             return (
-                                                console.log(val),
                                                 <Image
                                                     key={key}
                                                     source={{ 

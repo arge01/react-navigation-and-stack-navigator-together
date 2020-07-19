@@ -32,7 +32,6 @@ export default class MyModalTravel extends Component {
                                     {
                                         val.content.galerisi.map((val, key) => {
                                             return (
-                                                console.log(val),
                                                 <Image
                                                     key={key}
                                                     source={{ 

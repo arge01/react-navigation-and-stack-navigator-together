@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, Modal, TouchableHighlight, StyleSheet, ScrollView, Image } from 'react-native';
+import { View, Text, Modal, TouchableHighlight, StyleSheet, ScrollView, Image, Linking } from 'react-native';
 import { Icon, Button } from 'react-native-elements';
+import MapView from 'expo';
+import settings from '../../../services/settings';
+import HTML from 'react-native-render-html'
 
 export default class MyModal extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        };
-    }
-
     render() {
+        const {...val} = this.props.val;
         return (
             <Modal
                 animationType="slide"
@@ -19,9 +17,9 @@ export default class MyModal extends Component {
                 <View style={styles.modalView}>
                     <View style={styles.modalContent}>
                         <View style={styles.modalHeader}>
-                            <Text style={[styles.headerItem, styles.headerText]}>Bitiş Tarihi: 27.10.2020</Text>
+                            <Text style={[styles.headerItem, styles.headerText]}>{val.date}</Text>
                             <TouchableHighlight
-                                onPress={() => this.props.toggleModal()}
+                                onPress={() => this.props.toggleModal(val)}
                             >
                                 <Icon
                                     name='close'
@@ -31,24 +29,32 @@ export default class MyModal extends Component {
                         </View>
                         <View style={styles.modalContainer}>
                             <View style={styles.imgBack}>
-                                <Image source={{ uri: 'https://www.opet.com.tr/Files/Images/Campaign/637293886292328425_yakit_puan_header.png' }} style={styles.img} />
+                                <ScrollView style={{height: 200, width: '100%'}} vertical={true}>
+                                    {
+                                        val.content.galerisi.map((val, key) => {
+                                            return (
+                                                console.log(val),
+                                                <Image
+                                                    key={key}
+                                                    source={{ 
+                                                    uri: `${settings.imgUri}/thump-${val.img}` }} 
+                                                    resizeMode='cover'
+                                                    style={styles.img} />
+                                            )
+                                        })
+                                    }
+                                </ScrollView>
                             </View>
                             <View style={{ justifyContent: 'center', width: '100%', backgroundColor: '#fff', minHeight: 95, alignItems: 'center', padding: 15, marginVertical: 10 }}>
-                                <Text style={styles.title}>İş Bankası Maximum Kampanyası...</Text>
+                            <Text style={styles.title}> {val.content.icerigi.name} </Text>
                             </View>
                             <ScrollView style={{flex: 1}}>
                             <View style={{ justifyContent: 'flex-start', width: '100%', backgroundColor: '#fff', minHeight: 95, alignItems: 'flex-start', padding: 30, borderBottomColor: '#9a9a9a', borderBottomWidth: 2 }}>
-                                    <Text style={styles.titleText}>125 TL ve Üzeri Yakıt Alışverişine MaxiPuan Hediye!</Text>
-                                    <Text style={styles.titleContentText}>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tempus orci eget aliquam hendrerit. Curabitur mauris odio, dignissim nec vulputate porttitor, volutpat eget nisl. Ut at nibh sit amet lacus ultricies egestas eget vitae lacus. Donec nisl lacus, accumsan semper erat eget, ultricies imperdiet lorem. Cras quis cursus mi. Cras convallis libero eget lectus sagittis ultricies. Nullam maximus lobortis nisl vel mollis. Nullam dapibus mattis tincidunt. Suspendisse placerat tortor ligula. Ut iaculis tortor ut mauris iaculis vulputate. In quis maximus arcu.
-
-                                        Sed feugiat gravida semper. Proin iaculis placerat nunc at venenatis. Donec at dolor vitae ex egestas tempor. Aliquam imperdiet nibh et lacus lobortis finibus quis a elit. Praesent in cursus metus, non pellentesque sem. Cras eu arcu molestie, porta nibh sit amet, mollis orci. In hac habitasse platea dictumst. Morbi quam felis, sodales ac tincidunt in, faucibus in augue. Nulla nec mauris eros. Nam mi mauris, elementum nec tortor et, interdum porttitor ipsum. Phasellus condimentum est ut massa pellentesque, nec efficitur metus sollicitudin.
-
-                                        Vestibulum fermentum venenatis enim, sed varius est rhoncus et. Praesent ac posuere elit, nec sodales elit. Suspendisse sit amet ornare ligula. Duis eget tristique felis. Praesent et finibus mi, egestas accumsan orci. Nulla ut pharetra risus. Maecenas ut purus dolor. Quisque nec pulvinar sem. Pellentesque orci nunc, malesuada eget feugiat non, fermentum id ligula. Aliquam justo nisl, interdum et rutrum non, scelerisque ac ipsum. Nam in mattis lacus. Ut vel neque sem. In a ante eu ipsum sollicitudin sollicitudin. Duis justo nibh, sodales a tortor in, aliquam eleifend dolor. Proin imperdiet id ex rutrum finibus.
-                                    </Text>
+                                    <Text style={styles.titleText}>{val.content.icerigi.label}</Text>
+                                    <HTML style={styles.titleContentText} html={val.content.icerigi.icerik} />
                                 </View>
                             </ScrollView>
-                            <Button buttonStyle={styles.button} title="Adrese Git.." onPress={() => this.props.toggleModal()}/>
+                            <Button buttonStyle={styles.button} title="Adrese Git.." onPress={() => Linking.openURL(`${val.map}`)}/>
                         </View>
                     </View>
                 </View>
@@ -120,7 +126,7 @@ const styles = StyleSheet.create({
     },
     img: {
         width: '100%',
-        height: 270
+        height: 327
     },
     title: {
         fontSize: 18,

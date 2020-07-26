@@ -1,5 +1,5 @@
 const settings = {
-    uri: "https://arifgevenci.com/corumkampanya/public_html/index.html",
+    uri: "https://arifgevenci.com/corumkampanya/public_html",
     imgUri: `https://arifgevenci.com/corumkampanya/public_html/images`,
     defaultUri: {
         settings: "settings",

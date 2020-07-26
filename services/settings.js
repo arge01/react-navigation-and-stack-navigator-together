@@ -1,6 +1,6 @@
 const settings = {
-    uri: "http://85.105.114.187:8000",
-    imgUri: `http://85.105.114.187:8000/images`,
+    uri: "https://arifgevenci.com/corumkampanya/public_html/index.html",
+    imgUri: `https://arifgevenci.com/corumkampanya/public_html/images`,
     defaultUri: {
         settings: "settings",
         home: "index.html",

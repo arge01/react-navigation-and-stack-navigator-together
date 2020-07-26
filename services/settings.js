@@ -7,7 +7,8 @@ const settings = {
         campany: "kampanyalar.html",
         sweep: "cekilis-delisi.html",
         travel: "etkinlikler.html",
-        companies: "kategoriler.html"
+        companies: "kategoriler.html",
+        nextcomp: "kategori"
     }
 }
 export default settings;

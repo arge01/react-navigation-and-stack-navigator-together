@@ -1,61 +1,103 @@
 import React, { Component } from 'react';
-import { View, Text, Modal, TouchableHighlight, StyleSheet, ScrollView, Image } from 'react-native';
+import { View, Text, Modal, TouchableHighlight, StyleSheet, ScrollView, Image, Linking } from 'react-native';
 import { Icon, Button } from 'react-native-elements';
+import settings from '../../../services/settings';
+import HTML from 'react-native-render-html'
 
 export default class CompanyDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            val: {},
+            id: 0,
+            gallery: []
         };
     }
 
+    componentDidMount() {
+        this.setState({ val: this.props.navigation.state.params.val, id: this.props.navigation.state.params.id, gallery: this.props.navigation.state.params.val.galerisi });
+    }
+
     render() {
+        const { ...val } = this.state.val;
         return (
-            <ScrollView>
-                <View style={styles.modalView}>
-                    <View style={styles.modalContent}>
-                        <View style={styles.modalHeader}>
-                            <TouchableHighlight
-                                onPress={() => this.props.navigation.goBack()}
+            <>
+                <ScrollView>
+                    <View style={styles.modalView}>
+                        <View style={styles.modalContent}>
+                            <View style={styles.modalHeader}>
+                                <TouchableHighlight
+                                    onPress={() => this.props.navigation.goBack()}
                                 >
-                                <Icon
-                                    name='backspace'
-                                    color='#000'
-                                    style={styles.headerButton} />
-                            </TouchableHighlight>
-                            <Text style={[styles.headerItem, styles.headerText]}>Firmanın İsmi</Text>
-                        </View>
-                        <View style={styles.modalContainer}>
-                            <View style={styles.imgBack}>
-                                <Image source={{ uri: 'https://www.opet.com.tr/Files/Images/Campaign/637293886292328425_yakit_puan_header.png' }} style={styles.img} />
+                                    <Icon
+                                        name='backspace'
+                                        color='#000'
+                                        style={styles.headerButton} />
+                                </TouchableHighlight>
+                                <Text style={[styles.headerItem, styles.headerText]}>{val.name}</Text>
                             </View>
-                            <View style={{ justifyContent: 'center', width: '100%', backgroundColor: '#fff', minHeight: 95, alignItems: 'center', padding: 15, marginVertical: 10 }}>
-                                <Text style={styles.title}>Firmanın İsmi</Text>
-                            </View>
-                            <ScrollView style={{flex: 1}}>
-                            <View style={{ justifyContent: 'flex-start', width: '100%', backgroundColor: '#fff', minHeight: 95, alignItems: 'flex-start', padding: 30, borderBottomColor: '#9a9a9a', borderBottomWidth: 2 }}>
-                                    <Text style={styles.titleText}>Firma hakkında kısa bilgi...</Text>
-                                    <Text style={styles.titleContentText}>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tempus orci eget aliquam hendrerit. Curabitur mauris odio, dignissim nec vulputate porttitor, volutpat eget nisl. Ut at nibh sit amet lacus ultricies egestas eget vitae lacus. Donec nisl lacus, accumsan semper erat eget, ultricies imperdiet lorem. Cras quis cursus mi. Cras convallis libero eget lectus sagittis ultricies. Nullam maximus lobortis nisl vel mollis. Nullam dapibus mattis tincidunt. Suspendisse placerat tortor ligula. Ut iaculis tortor ut mauris iaculis vulputate. In quis maximus arcu.
-
-                                        Sed feugiat gravida semper. Proin iaculis placerat nunc at venenatis. Donec at dolor vitae ex egestas tempor. Aliquam imperdiet nibh et lacus lobortis finibus quis a elit. Praesent in cursus metus, non pellentesque sem. Cras eu arcu molestie, porta nibh sit amet, mollis orci. In hac habitasse platea dictumst. Morbi quam felis, sodales ac tincidunt in, faucibus in augue. Nulla nec mauris eros. Nam mi mauris, elementum nec tortor et, interdum porttitor ipsum. Phasellus condimentum est ut massa pellentesque, nec efficitur metus sollicitudin.
-
-                                        Vestibulum fermentum venenatis enim, sed varius est rhoncus et. Praesent ac posuere elit, nec sodales elit. Suspendisse sit amet ornare ligula. Duis eget tristique felis. Praesent et finibus mi, egestas accumsan orci. Nulla ut pharetra risus. Maecenas ut purus dolor. Quisque nec pulvinar sem. Pellentesque orci nunc, malesuada eget feugiat non, fermentum id ligula. Aliquam justo nisl, interdum et rutrum non, scelerisque ac ipsum. Nam in mattis lacus. Ut vel neque sem. In a ante eu ipsum sollicitudin sollicitudin. Duis justo nibh, sodales a tortor in, aliquam eleifend dolor. Proin imperdiet id ex rutrum finibus.
-                                    </Text>
+                            <View style={styles.modalContainer}>
+                                <View style={styles.imgBack}>
+                                    <Image resizeMode="cover" source={{ uri: `${settings.imgUri}/resized/${val.img}` }} style={styles.img} />
                                 </View>
-                            </ScrollView>
-                            <Button buttonStyle={styles.button} title="Firmayı Takip Et.."/>
+                                <View style={{ justifyContent: 'center', width: '100%', backgroundColor: '#fff', minHeight: 95, alignItems: 'center', padding: 15, marginVertical: 10 }}>
+                                    <Text style={styles.title}>{val.name}</Text>
+                                </View>
+                                <ScrollView style={{ flex: 1 }}>
+                                    <View style={{ justifyContent: 'flex-start', width: '100%', backgroundColor: '#fff', minHeight: 95, alignItems: 'flex-start', padding: 30, borderBottomColor: '#9a9a9a', borderBottomWidth: 2 }}>
+                                        <Text style={styles.titleText}>{val.label}</Text>
+                                        <HTML style={styles.titleContentText} html={val.icerik}></HTML>
+                                    </View>
+                                </ScrollView>
+                                <View style={{backgroundColor: '#fff', width: '100%', alignItems: 'center'}}>
+                                    {
+                                        this.state.gallery.map((val, key) => {
+                                            return (
+                                                <Image
+                                                    key={key}
+                                                    source={{
+                                                        uri: `${settings.imgUri}/${val.img}`
+                                                    }}
+                                                    resizeMode='cover'
+                                                    style={{ width: '100%', height: 200, margin: 0 }} />
+                                            )
+                                        })
+                                    }
+                                </View>
+                                <Button buttonStyle={styles.button} title="Firmanın Web/Map Adresi.." onPress={() => Linking.openURL(`${val.map}`)} />
+                            </View>
                         </View>
                     </View>
-                </View>
-            </ScrollView>
+                </ScrollView>
+                {
+                    /* 
+                        <View style={[styles.imgBack, { marginBottom: 0, marginTop: 0, position: 'relative', zIndex: 100000, backgroundColor: '#f3f3f3' }]}>
+                            <Text style={{ margin: 15 }}>Galeri</Text>
+                            <ScrollView style={{ height: 70, width: '100%' }} vertical={true}>
+                                {
+                                    this.state.gallery.map((val, key) => {
+                                        return (
+                                            <Image
+                                                key={key}
+                                                source={{
+                                                    uri: `${settings.imgUri}/${val.img}`
+                                                }}
+                                                resizeMode='contain'
+                                                style={{ width: '100%', height: 150 }} />
+                                        )
+                                    })
+                                }
+                            </ScrollView>
+                        </View>
+                    */
+                }
+            </>
         );
     }
 }
 
 const styles = StyleSheet.create({
     modalView: {
-        backgroundColor: "white",
         padding: 0,
         alignItems: "center",
         shadowColor: "#000",
@@ -113,7 +155,7 @@ const styles = StyleSheet.create({
     },
     img: {
         width: '100%',
-        height: 270
+        height: 190
     },
     title: {
         fontSize: 18,
@@ -135,12 +177,12 @@ const styles = StyleSheet.create({
     },
     button: {
         height: 50,
-		backgroundColor: '#3b68e6',
-		color: 'white',
-		fontSize: 12,
+        backgroundColor: '#3b68e6',
+        color: 'white',
+        fontSize: 12,
         borderRadius: 30,
         marginTop: 15,
         marginBottom: 15
-	}
+    }
 });
 

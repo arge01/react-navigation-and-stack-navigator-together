@@ -29,7 +29,7 @@ class HomeScreen extends Component {
 
 const styles = StyleSheet.create({
     content: {
-        flex: 1,
+		flex: 1,
         backgroundColor: '#dedfe1',
         resizeMode: 'repeat',
         position: 'relative'

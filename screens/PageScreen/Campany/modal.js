@@ -6,6 +6,30 @@ import settings from '../../../services/settings';
 import HTML from 'react-native-render-html'
 
 export default class MyModal extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            date: "2020-08-10",
+            countDownDate: ""
+        }
+    }
+    setTimeCounter = () => {
+        const countDownDate = new Date(this.state.date).getTime();
+        const now = new Date().getTime();
+
+        // Calculating the days, hours, minutes and seconds left
+        const days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+
+        // https://www.educative.io/edpresso/how-to-create-a-countdown-timer-using-javascript
+        // https://stackoverflow.com/questions/9335140/how-to-countdown-to-a-date
+
+        console.log(now);
+        console.log("-------------------");
+        console.log(countDownDate);
+    }
     render() {
         const {...val} = this.props.val;
         return (
@@ -53,6 +77,10 @@ export default class MyModal extends Component {
                                     <HTML style={styles.titleContentText} html={val.content.icerigi.icerik} />
                                 </View>
                             </ScrollView>
+                            <Button
+                                title="Time Yazdır"
+                                onPress={ () => this.setTimeCounter() }
+                            />
                             <Button buttonStyle={styles.button} title="Adrese Git.." onPress={() => Linking.openURL(`${val.map}`)}/>
                         </View>
                     </View>

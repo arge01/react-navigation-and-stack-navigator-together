@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, View, ImageBackground, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, ScrollView, View, ImageBackground, Text, TouchableOpacity, Linking } from 'react-native';
 import { DrawerItems } from "react-navigation";
 
 export default class CustomDrawerContentComponent extends Component {
@@ -44,6 +44,15 @@ export default class CustomDrawerContentComponent extends Component {
                         onPress={() => this.props.navigation.navigate('Companies')}
                     >
                         <Text style={{fontSize: 15, fontWeight: 'bold'}}>Firmalar</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        onPress={() => Linking.openURL(`tel:+905492513306`)}
+                        style={{marginTop: 0, backgroundColor: '#000', padding: 10}}>
+                        <View>
+                            <Text style={{fontSize: 15, fontWeight: 'bold', marginBottom: 5, color: '#ddc082'}}>Caner ERGAN</Text>
+                            <Text style={{ fontSize: 20, color: '#fff' }}>+90 549 251 33 06 </Text>
+                        </View>
                     </TouchableOpacity>
                 </ScrollView>
             </View>

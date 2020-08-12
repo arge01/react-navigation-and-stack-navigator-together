@@ -1,7 +1,30 @@
 import React, { Component } from 'react';
-import { Text, ImageBackground, StyleSheet, View, TouchableOpacity, Image, Button } from 'react-native'
+import { Text, ImageBackground, StyleSheet, View, TouchableOpacity, Image, Button } from 'react-native';
+import * as WebBrowser from 'expo-web-browser';
 
 export default class Content extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            result: null
+        }
+    }
+    _havaDurumu = () => {
+        const result = WebBrowser.openBrowserAsync('https://www.mgm.gov.tr/tahmin/il-ve-ilceler.aspx?il=CORUM');
+        this.setState({ result });
+    };
+    _nobetciEczaneler = () => {
+        const result = WebBrowser.openBrowserAsync('https://ecza.io/corum-nobetci-eczane');
+        this.setState({ result });
+    }
+    _gazeteOku = () => {
+        const result = WebBrowser.openBrowserAsync('https://www.milliyet.com.tr/corum-haber/');
+        this.setState({ result });
+    }
+    _firmaKayit = () => {
+        const result = WebBrowser.openBrowserAsync('https://arifgevenci.com/corumkampanya/public_html/firmakayit.html');
+        this.setState({ result });
+    }
     render() {
         const background = require('../../assets/background.png');
         const { navigate } = this.props;
@@ -10,21 +33,21 @@ export default class Content extends Component {
                 <View style={styles.btnGroup}>
                     <View style={[styles.btnItem, styles.btnItemTop]}>
                         <Image source={require('../../assets/fk.png')} style={styles.btnImgTop} />
-                        <TouchableOpacity style={styles.btnView}>
+                        <TouchableOpacity onPress={ () => this._firmaKayit() } style={styles.btnView}>
                             <Text style={styles.btnTextTop}>Firma</Text>
                             <Text style={styles.btnTextTop}>Kayıt</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={[styles.btnItem, styles.btnItemTop]}>
                         <Image source={require('../../assets/e.png')} style={styles.btnImgTop} />
-                        <TouchableOpacity style={styles.btnView}>
+                        <TouchableOpacity onPress={ () => this._nobetciEczaneler() } style={styles.btnView}>
                             <Text style={styles.btnTextTop}>Nöbetci </Text>
                             <Text style={styles.btnTextTop}>Eczane </Text>
                         </TouchableOpacity>
                     </View>
                     <View style={[styles.btnItem, styles.btnItemTop]}>
                         <Image source={require('../../assets/hv.png')} style={styles.btnImgTop} />
-                        <TouchableOpacity style={styles.btnView}>
+                        <TouchableOpacity onPress={ () => this._havaDurumu() } style={styles.btnView}>
                             <Text style={styles.btnTextTop}>Hava </Text>
                             <Text style={styles.btnTextTop}>Durumu </Text>
                         </TouchableOpacity>
@@ -40,7 +63,7 @@ export default class Content extends Component {
                     </View>
                     <View style={[styles.btnItem, styles.btnItemBottom]}>
                         <Image source={require('../../assets/gz.png')} style={styles.btnImgBottom} />
-                        <TouchableOpacity style={styles.btnView}>
+                        <TouchableOpacity onPress={ () => this._gazeteOku() } style={styles.btnView}>
                             <Text style={styles.btnTextBottom}>Gazete </Text>
                             <Text style={styles.btnTextBottom}>Oku </Text>
                         </TouchableOpacity>

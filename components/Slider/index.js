@@ -1,8 +1,32 @@
 import React, { Component }                                                 from 'react'
 import { Text, View, StyleSheet, ImageBackground, Image, TouchableOpacity } from 'react-native'
 import { AppStackNavigator }                                                from "../../App";
+import { SliderBox } from "react-native-image-slider-box";
+import settings from '../../services/settings';
 
 export default class Slider extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            images: [
+                'https://arifgevenci.com/corumkampanya/public_html/images/1597403220-first-slider.jpeg'
+            ]
+        }
+    }
+
+    componentDidMount(){
+        fetch(`${settings.uri}`)
+            .then((res) => res.json())
+            .then((res) => {
+                res.slider.map((val,key) => {
+                    const images=[];
+                    const image = `${settings.imgUri}/${val.img}`;
+                    images.push(image);
+                    this.state.images.push(images[0]);
+                })
+            } );
+    }
+
     render() {
         const logo = require('../../assets/logo.png');
         const background = require('../../assets/background_opacty.png');
@@ -16,7 +40,13 @@ export default class Slider extends Component {
                 <ImageBackground style={styles.sliderBack} source={background}/>
 
                 <View style={styles.slides}>
-                    <Image style={styles.slideItem} source={require('../../assets/corumHD.jpg')}/>
+                    <SliderBox 
+                        images={this.state.images} 
+                        sliderBoxHeight={'100%'}
+                        autoplay
+                        circleLoop
+                        />
+                    {/* <Image style={styles.slideItem} source={require('../../assets/corumHD.jpg')}/> */}
                     <View style={{position: 'absolute', width: '100%', height: '100%'}}>
                         <View style={{position: 'relative', flex: 1, width: '100%', height: '100%'}}></View>
                     </View>

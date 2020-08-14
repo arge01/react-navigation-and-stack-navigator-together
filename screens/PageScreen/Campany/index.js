@@ -25,7 +25,8 @@ export default class Campany extends Component {
 			},
 			loading: false,
 			campanys: {},
-			tabs: []
+			tabs: [],
+			interVal: false
 		};
 	}
 
@@ -39,8 +40,8 @@ export default class Campany extends Component {
 			.then((res) => this.setState({campanys: res, tabs: res.tabs, loading: true}) )
 	}
 
-	toggleModal = (val) => {
-		return this.setState({modal: !this.state.modal, modalVal: val});
+	toggleModal = (val, interVal) => {
+		return this.setState({modal: !this.state.modal, modalVal: val, interVal});
 	}
 
 	render() {
@@ -49,7 +50,7 @@ export default class Campany extends Component {
 			return (
 				<View style={{flex: 1, position: 'relative', width: '100%', height: '100%'}}>
 					<Header navigate={this.props.navigation} goBackButton={this.props.navigation.goBack} />
-					<MyModal toggleModal={this.toggleModal} modal={this.state.modal} val={this.state.modalVal}/>
+					<MyModal toggleModal={this.toggleModal} modal={this.state.modal} val={this.state.modalVal} interVal={this.state.interVal}/>
 					<ImageBackground
 						source={background}
 						resizeMode={"repeat"}

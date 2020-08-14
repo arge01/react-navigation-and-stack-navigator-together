@@ -9,27 +9,42 @@ export default class MyModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            date: "2020-08-10",
-            countDownDate: ""
+            interVal: "",
+            timers: ""
         }
     }
-    setTimeCounter = () => {
-        const countDownDate = new Date(this.state.date).getTime();
-        const now = new Date().getTime();
 
-        // Calculating the days, hours, minutes and seconds left
-        const days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
-
-        // https://www.educative.io/edpresso/how-to-create-a-countdown-timer-using-javascript
-        // https://stackoverflow.com/questions/9335140/how-to-countdown-to-a-date
-
-        console.log(now);
-        console.log("-------------------");
-        console.log(countDownDate);
+    componentDidMount(){
+        this.setState({interVal: setInterval(this.myTimer, 1000)});
     }
+
+    myTimer = () => {
+		var countDownDate = new Date(this.props.val.date);
+
+		// Get today's date and time
+		var now = new Date();
+
+		// Find the distance between now and the count down date
+		var distance = countDownDate - now;
+
+		// Time calculations for days, hours, minutes and seconds
+		var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+		// Display the result in the element with id="demo"
+		const timers = days + " Gün " + hours + " Saat "
+		+ minutes + " Dakika " + seconds + " Saniye";
+
+        return this.setState({timers});
+	}
+
+    toggleModals = (val) => {
+        //clearInterval(this.state.interVal);
+        return this.props.toggleModal(val, false);
+    }
+
     render() {
         const {...val} = this.props.val;
         return (
@@ -41,9 +56,9 @@ export default class MyModal extends Component {
                 <View style={styles.modalView}>
                     <View style={styles.modalContent}>
                         <View style={styles.modalHeader}>
-                            <Text style={[styles.headerItem, styles.headerText]}>{val.date}</Text>
+                            <Text style={[styles.headerItem, styles.headerText, {fontSize: 13, fontWeight: "bold"}]}>{this.state.timers} /kaldı...</Text>
                             <TouchableHighlight
-                                onPress={() => this.props.toggleModal(val)}
+                                onPress={() => this.toggleModals(val)}
                             >
                                 <Icon
                                     name='close'
@@ -77,10 +92,6 @@ export default class MyModal extends Component {
                                     <HTML style={styles.titleContentText} html={val.content.icerigi.icerik} />
                                 </View>
                             </ScrollView>
-                            <Button
-                                title="Time Yazdır"
-                                onPress={ () => this.setTimeCounter() }
-                            />
                             <Button buttonStyle={styles.button} title="Adrese Git.." onPress={() => Linking.openURL(`${val.map}`)}/>
                         </View>
                     </View>

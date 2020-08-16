@@ -50,7 +50,7 @@ export default class CustomDrawerContentComponent extends Component {
                         onPress={() => Linking.openURL(`tel:+905492513306`)}
                         style={{marginTop: 0, backgroundColor: '#000', padding: 10}}>
                         <View>
-                            <Text style={{fontSize: 15, fontWeight: 'bold', marginBottom: 5, color: '#ddc082'}}>Caner ERGAN</Text>
+                            <Text style={{fontSize: 15, fontWeight: 'bold', marginBottom: 5, color: '#ddc082'}}>İletişim No:</Text>
                             <Text style={{ fontSize: 20, color: '#fff' }}>+90 549 251 33 06 </Text>
                         </View>
                     </TouchableOpacity>

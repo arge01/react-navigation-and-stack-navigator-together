@@ -43,6 +43,7 @@ export default class Slider extends Component {
                         images={this.state.images} 
                         sliderBoxHeight={'100%'}
                         autoplay
+                        
                         circleLoop
                         />
                     {/* <Image style={styles.slideItem} source={require('../../assets/corumHD.jpg')}/> */}

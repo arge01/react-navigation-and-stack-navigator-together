@@ -58,7 +58,7 @@ export default class MyModalSweep extends Component {
                                     <HTML style={styles.titleContentText} html={val.content.icerigi.icerik} />
                                 </View>
                             </ScrollView>
-                            <Button buttonStyle={styles.button} title="Adrese Git.." onPress={() => Linking.openURL(`${val.map}`)}/>
+                            <Button buttonStyle={styles.button} title="Resmi İnstagram Sayfamıza Gidin!.." onPress={() => Linking.openURL(`${val.map}`)}/>
                         </View>
                     </View>
                 </View>

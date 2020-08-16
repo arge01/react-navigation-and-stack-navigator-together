@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, ImageBackground, Image, TouchableOpacity } from
 import { AppStackNavigator }                                                from "../../App";
 import { SliderBox } from "react-native-image-slider-box";
 import settings from '../../services/settings';
+import { concat } from 'react-native-reanimated';
 
 export default class Slider extends Component {
     constructor(props){
@@ -19,13 +20,10 @@ export default class Slider extends Component {
             .then((res) => res.json())
             .then((res) => {
                 res.slider.map((val,key) => {
-                    const images=[];
-                    const image = `${settings.imgUri}/${val.img}`;
-                    images.push(image);
-                    this.state.images.push(images[0]);
+                    const images = this.state.images.concat(`${settings.imgUri}/${val.img}`);
+                    this.setState({images});
                 })
             });
-            console.log(this.state.images)
     }
 
     render() {

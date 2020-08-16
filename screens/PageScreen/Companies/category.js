@@ -50,7 +50,7 @@ class Category extends Component {
                                                     style={{width: 90, height: 90, borderRadius: 90}} />
                                         </View>
                                         <View style={{width: 90, justifyContent: 'center', alignItems: 'center'}}>
-                                            <Text style={{ textAlign: 'center', wdith: 90, justifyContent: 'center', alignItems: 'center', marginTop: 5, fontSize: 14, fontWeight: 'bold', color: '#383f42' }}>{val.name}</Text>
+                                            <Text style={{ textAlign: 'center', wdith: 90, height: 75, justifyContent: 'center', alignItems: 'center', marginTop: 5, fontSize: 14, fontWeight: 'bold', color: '#383f42' }}>{val.name}</Text>
                                         </View>
                                     </TouchableOpacity>
                                 )

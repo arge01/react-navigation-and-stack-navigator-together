@@ -14,7 +14,7 @@ export default class Slider extends Component {
         }
     }
 
-    componentDidMount(){
+    componentWillMount() {
         fetch(`${settings.uri}`)
             .then((res) => res.json())
             .then((res) => {
@@ -24,7 +24,8 @@ export default class Slider extends Component {
                     images.push(image);
                     this.state.images.push(images[0]);
                 })
-            } );
+            });
+            console.log(this.state.images)
     }
 
     render() {

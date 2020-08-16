@@ -50,7 +50,7 @@ export default class Campany extends Component {
 			return (
 				<View style={{flex: 1, position: 'relative', width: '100%', height: '100%'}}>
 					<Header navigate={this.props.navigation} goBackButton={this.props.navigation.goBack} />
-					<MyModal toggleModal={this.toggleModal} modal={this.state.modal} val={this.state.modalVal} interVal={this.state.interVal}/>
+					<MyModal key={0} toggleModal={this.toggleModal} modal={this.state.modal} val={this.state.modalVal} interVal={this.state.interVal}/>
 					<ImageBackground
 						source={background}
 						resizeMode={"repeat"}

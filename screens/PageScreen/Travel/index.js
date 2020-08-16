@@ -49,7 +49,7 @@ export default class Travel extends Component {
 			return (
 				<View style={{flex: 1, position: 'relative', width: '100%', height: '100%'}}>
 					<Header navigate={this.props.navigation} goBackButton={this.props.navigation.goBack} />
-					<MyModalTravel toggleModal={this.toggleModal} modal={this.state.modal} val={this.state.modalVal}/>
+					<MyModalTravel key={0} toggleModal={this.toggleModal} modal={this.state.modal} val={this.state.modalVal}/>
 					<ImageBackground
 						source={background}
 						resizeMode={"repeat"}

@@ -32,7 +32,6 @@ export default class Companies extends Component {
 				label: res.content.icerigi.label, 
 				loading: true,
 				});
-				console.log(this.state.date)
 				this.setState({interVal: setInterval(this.myTimer, 1000)});
 			});
 	}

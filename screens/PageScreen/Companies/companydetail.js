@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, Modal, TouchableHighlight, StyleSheet, ScrollView, Image, Linking } from 'react-native';
 import { Icon, Button } from 'react-native-elements';
 import settings from '../../../services/settings';
-import HTML from 'react-native-render-html'
+//import HTML from 'react-native-render-html'
+import HTMLView from 'react-native-htmlview';
 
 export default class CompanyDetail extends Component {
     constructor(props) {
@@ -46,7 +47,7 @@ export default class CompanyDetail extends Component {
                                 <ScrollView style={{ flex: 1 }}>
                                     <View style={{ justifyContent: 'flex-start', width: '100%', backgroundColor: '#fff', minHeight: 95, alignItems: 'flex-start', padding: 30, borderBottomColor: '#9a9a9a', borderBottomWidth: 2 }}>
                                         <Text style={styles.titleText}>{val.label}</Text>
-                                        <HTML style={styles.titleContentText} html={val.icerik}></HTML>
+                                        <HTMLView style={styles.titleContentText} value={ val.icerik } />
                                     </View>
                                 </ScrollView>
                                 <View style={{backgroundColor: '#fff', width: '100%', alignItems: 'center'}}>

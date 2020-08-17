@@ -3,7 +3,8 @@ import { View, Text, Modal, TouchableHighlight, StyleSheet, ScrollView, Image, L
 import { Icon, Button } from 'react-native-elements';
 import MapView from 'expo';
 import settings from '../../../services/settings';
-import HTML from 'react-native-render-html'
+//import HTML from 'react-native-render-html'
+import HTMLView from 'react-native-htmlview';
 
 export default class MyModal extends Component {
     constructor(props) {
@@ -89,7 +90,7 @@ export default class MyModal extends Component {
                             <ScrollView style={{flex: 1}}>
                             <View style={{ justifyContent: 'flex-start', width: '100%', backgroundColor: '#fff', minHeight: 95, alignItems: 'flex-start', padding: 30, borderBottomColor: '#9a9a9a', borderBottomWidth: 2 }}>
                                     <Text style={styles.titleText}>{val.content.icerigi.label}</Text>
-                                    <HTML style={styles.titleContentText} html={val.content.icerigi.icerik} />
+                                    <HTMLView style={styles.titleContentText} value={val.content.icerigi.icerik} />
                                 </View>
                             </ScrollView>
                             <Button buttonStyle={styles.button} title="Adrese Git.." onPress={() => Linking.openURL(`${val.map}`)}/>

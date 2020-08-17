@@ -21,7 +21,6 @@ class NextCompanies extends Component {
         fetch(`${settings.uri}/${settings.defaultUri.nextcomp}/${this.props.navigation.state.params.id}`)
 			.then((res) => res.json())
             .then((res) => this.setState({list: res.categories}) )
-            
     }
 
     render() {
@@ -48,12 +47,14 @@ class NextCompanies extends Component {
                         {
                             this.state.list.map((val, key) => {
                                 return (
+                                    console.log(val),
                                     <TouchableOpacity key={key} onPress={
                                         () => this.props.navigation.navigate(
                                             "CompanyDetail",
                                             { id: val.id, val: val }
                                         )
                                     } style={{ width: 90, justifyContent: 'center', alignItems: 'center', marginVertical: 15, marginHorizontal: 5 }}>
+                                        
                                         <View
                                             colors={['#1F8B9E', '#DB7676']}
                                             style={{ width: 90, height: 90, borderRadius: 90, alignItems: "center", justifyContent: 'center', backgroundColor: '#383f42' }}>

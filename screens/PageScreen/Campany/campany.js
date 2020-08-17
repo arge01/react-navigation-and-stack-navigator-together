@@ -32,15 +32,16 @@ export default class Companies extends Component {
 				label: res.content.icerigi.label, 
 				loading: true,
 				});
+				console.log(this.state.date)
 				this.setState({interVal: setInterval(this.myTimer, 1000)});
 			});
 	}
 
 	myTimer = () => {
-		var countDownDate = new Date(this.state.date);
+		var countDownDate = new Date(this.state.date).getTime();
 
 		// Get today's date and time
-		var now = new Date();
+		var now = new Date().getTime();
 
 		// Find the distance between now and the count down date
 		var distance = countDownDate - now;

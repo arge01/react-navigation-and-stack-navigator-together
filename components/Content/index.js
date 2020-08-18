@@ -14,7 +14,7 @@ export default class Content extends Component {
         this.setState({ result });
     };
     _nobetciEczaneler = () => {
-        const result = WebBrowser.openBrowserAsync('https://ecza.io/corum-nobetci-eczane');
+        const result = WebBrowser.openBrowserAsync('http://www.corumeo.org/nobetci_eczane.asp');
         this.setState({ result });
     }
     _gazeteOku = () => {

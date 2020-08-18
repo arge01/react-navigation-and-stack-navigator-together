@@ -65,7 +65,7 @@ export default class CompanyDetail extends Component {
                                         })
                                     }
                                 </View>
-                                <Button buttonStyle={styles.button} title="Firmanın Konumuna Git..." onPress={() => Linking.openURL(`${val.map}`)} />
+                                <Button buttonStyle={styles.button} title="Firmanın Konumuna Git..." onPress={() => Linking.openURL(`${val.address}`)} />
                             </View>
                         </View>
                     </View>

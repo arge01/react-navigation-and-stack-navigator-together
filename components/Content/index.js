@@ -25,7 +25,7 @@ export default class Content extends Component {
         const result = WebBrowser.openBrowserAsync('https://arifgevenci.com/corumkampanya/public_html/firmakayit.html');
         this.setState({ result });
     }
-    _isİlani = () => {
+    _isIlani = () => {
         const result = WebBrowser.openBrowserAsync('https://arifgevenci.com/corumkampanya/public_html/isilanlari.html');
         this.setState({ result });
     }
@@ -60,7 +60,7 @@ export default class Content extends Component {
                 <View style={styles.btnGroup}>
                     <View style={[styles.btnItem, styles.btnItemBottom]}>
                         <Image source={require('../../assets/is.png')} style={styles.btnImgBottom} />
-                        <TouchableOpacity onPress={ () => this._isİlani() } style={styles.btnView}>
+                        <TouchableOpacity onPress={ () => this._isIlani() } style={styles.btnView}>
                             <Text style={styles.btnTextBottom}>İş </Text>
                             <Text style={styles.btnTextBottom}>İlanları </Text>
                         </TouchableOpacity>

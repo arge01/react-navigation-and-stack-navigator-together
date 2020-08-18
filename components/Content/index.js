@@ -18,7 +18,7 @@ export default class Content extends Component {
         this.setState({ result });
     }
     _gazeteOku = () => {
-        const result = WebBrowser.openBrowserAsync('https://www.milliyet.com.tr/corum-haber/');
+        const result = WebBrowser.openBrowserAsync('http://www.corumhakimiyet.net/');
         this.setState({ result });
     }
     _firmaKayit = () => {

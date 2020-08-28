@@ -59,8 +59,8 @@ export default class CompanyDetail extends Component {
                                                     source={{
                                                         uri: `${settings.imgUri}/${val.img}`
                                                     }}
-                                                    resizeMode='cover'
-                                                    style={{ width: '100%', height: 200, margin: 0 }} />
+                                                    resizeMode='contain'
+                                                    style={{ width: '100%', height: 250, margin: 0 }} />
                                             )
                                         })
                                     }
